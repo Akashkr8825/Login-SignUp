@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center align-items-center m-0" style="height: 100vh;">
+      <div class="login_oueter">
+        <div class="col-md-12 logo_outer">
+        </div>
+        <form [formGroup]="loginForm" class="p" (ngSubmit)="login()">
+          <div class="form-row">
+            <h4 class="title my-3">Login For Access</h4>
+            <div class="col-12">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope "></i></span>
+                </div>
+                <input type="email" formControlName="emailId" class="input form-control" id="emailId" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />
+              </div>
+            </div>
+            <small *ngIf="loginForm.controls['emailId'].dirty && loginForm.hasError('required','emailId')" class="text-danger ">*Username is Required</small>
+            <div class="col-12">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                </div>
+                <input [type]="type" formControlName="password" class="input form-control" id="password" placeholder="password" required="true" aria-label="password" aria-describedby="basic-addon1" />
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i (click)="hideShowPass()" class="fa {{eyeIcon}}"i></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')" class="text-danger">*Password is Required</small>
+            <div class="col-sm-12 pt-3 text-right">
+              <p class="title">Create Account? <a routerLink="/signup">Register</a></p>
+            </div>
+            <div class="col-12">
+              <button  (click)="onSubmit()"  class="btn btn-primary" type="submit" name="signin">Login</button>
+              <button [disabled]="loginForm.invalid" class="btn btn-primary m-1" type="reset">Clear</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

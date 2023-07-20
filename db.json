@@ -1,0 +1,11 @@
+{
+  "signupUsers": [
+    {
+      "emailId": "akash@gmail.com",
+      "password": "grtr46y67",
+      "confirmPassword": "grtr46y67",
+      "phone": "2343654768",
+      "id": 1
+    }
+  ]
+}

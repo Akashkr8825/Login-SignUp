@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center align-items-center m-0" style="height: 100vh;">
+      <div class="login_oueter">
+        <div class="col-md-12 logo_outer">
+        </div>
+        <form  [formGroup]="signUpForm" class="p" (ngSubmit)="signUp()">
+          <div class="form-row">
+            <h4 class="title my-3">Register</h4>
+            <!-- email -->
+            <div class="col-12">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
+                </div>
+                <input type="email" formControlName="emailId" class="input form-control" id="emailId" placeholder="eg: xyz@gmail.com" aria-label="emailId" aria-describedby="basic-addon1" />
+              </div>
+            </div>
+            <small *ngIf="signUpForm.controls['emailId'].dirty && signUpForm.hasError('required','emailId')" class="text-danger">*Email is invalid</small>
+            <small *ngIf="signUpForm.controls['emailId'].touched && signUpForm.hasError('pattern','emailId') " class="text-danger">*Email syntax is invalid</small>
+            <!-- password -->
+            <div class="col-12">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                </div>
+                <input [type]="type" formControlName="password" class="input form-control" id="password" placeholder="password" required="true" aria-label="password" aria-describedby="basic-addon1" />
+                <div class="input-group-append">
+                  <span class="input-group-text">
+                    <i (click)="hideShowPass()" class="fa {{eyeIcon}}"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <small *ngIf="signUpForm.controls['password'].dirty && signUpForm.hasError('required','password')" class="text-danger">*Password is Required</small>
+            <small *ngIf="signUpForm.hasError('minlength','password')" class="text-danger">*Length must be more than 8 digit</small>
+            
+            <!-- confirm password -->
+            <div class="col-12">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                  </div>
+                  <input [type]="type" formControlName="confirmPassword" class="input form-control" id="confirmPassword" placeholder="Confirm password" required="true" aria-label="password" aria-describedby="basic-addon1" />
+                  <div class="input-group-append">
+                    <span class="input-group-text">
+                      <i (click)="hideShowPass()" class="fa {{eyeIcon}}"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <small *ngIf="signUpForm.controls['confirmPassword'].dirty   && signUpForm.hasError('required','confirmPassword')" class="text-danger">*Password confirmation is Required</small>
+              <small *ngIf="signUpForm.hasError('minlength','confirmPassword') && signUpForm.hasError('notmatched')" class="text-danger">*password not matched</small>
+             
+              <!-- mobile -->
+              <div class="col-12">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"></i></span>
+                  </div>
+                  <input type="tel" formControlName="phone" class="input form-control" id="phone" placeholder="Enter your phone number" aria-label="phone" aria-describedby="basic-addon1" />
+                </div>
+              </div>
+              <small *ngIf="signUpForm.controls['phone'].dirty && signUpForm.controls['phone'].touched && signUpForm.hasError('required','phone')" class="text-danger">*Phone Number is Required</small>
+              <small *ngIf="signUpForm.hasError('pattern','phone') && signUpForm.hasError('minlength','phone')" class="text-danger">*enter 10 digit number</small>
+             
+              <div class="col-sm-12 pt-3 text-right">
+              <p class="title">Already registered? <a routerLink="/login">Login</a></p>
+            </div>
+            <div class="col-12">
+              <button  (click)="onSubmit()" [disabled]="signUpForm.invalid"  class="btn btn-primary" type="submit" name="signin">Register</button>
+              <button class="btn btn-primary m-1" type="reset">Clear</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
